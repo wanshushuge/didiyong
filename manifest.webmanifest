@@ -1,0 +1,9 @@
+{
+  "name": "弟弟记账本",
+  "short_name": "记账本",
+  "description": "给家人用的极简记账网页，数据只存在本地浏览器，不上传任何服务器。",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#e6dbff",
+  "theme_color": "#7048e8"
+}
