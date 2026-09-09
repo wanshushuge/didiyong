@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-page-node-id="BAu93aDrL8Er4gTuYh4oAc">
-<head data-page-node-id="0ChVVUVm8Z9LrE2TleZnTj">
-<meta charset="utf-8" data-page-node-id="5bvfm4CVOJ3AM0qQ4Tf92g">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" data-page-node-id="Ck3BT4WaIIQv8NSw0lW5G7">
-<meta name="apple-mobile-web-app-capable" content="yes" data-page-node-id="oHFjAIQMXHohzjMfABt7IH">
-<meta name="apple-mobile-web-app-status-bar-style" content="default" data-page-node-id="rw1V00YJoXW8IXDvhbCSA0">
-<meta name="theme-color" content="#1f7a5c" data-page-node-id="wWsqME5qoz5FOhrNTuBU2V">
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#2f7cf6">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>弟弟记账本</title>
+<script>(function(){try{var t=localStorage.getItem('ledger_theme')||'auto';var d=(t==='dark')||(t==='auto'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('rc-dark');}catch(e){}})();</script>
 <style>
 .view{display:none;max-width:560px;margin:0 auto;padding:0 0 8px}
 .view.on{display:block}
@@ -24,8 +28,8 @@ body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSys
   --sub:#787f88;
   --faint:#a3a9b2;
   --line:rgba(255,255,255,0.55);
-  --brand:#1f7a5c;
-  --brand-soft:#e8f3ee;
+  --brand:#2f7cf6;
+  --brand-soft:#eaf1ff;
   --exp:#d93b30;
   --inc:#1f9d55;
   --warn:#d9781b;
@@ -444,186 +448,192 @@ h1, h2, h3, p{
 .lz-tab.on{color:var(--brand);font-weight:600}
 .lz-tab.on span{font-weight:600}
 @media (prefers-color-scheme: dark){
-  body{background:#161a1f;color:#e7ebef}
-  :root{--bg:#161a1f;--card:rgba(40,46,54,.7);--ink:#e7ebef;--sub:#9aa3ad;--faint:#6b727b;--line:rgba(255,255,255,.08)}
-  .lz-tabbar{background:rgba(28,32,38,.96);border-top-color:#2a2f36}
-  .budget-edit input{background:#22272e;color:#e7ebef;border-color:#333a42}
-  .usage-card{background:linear-gradient(135deg,#1d2a24,#1a2230)}
+  html.rc-dark body{background:#161a1f;color:#e7ebef}
+  html.rc-dark :root{--bg:#161a1f;--card:rgba(40,46,54,.7);--ink:#e7ebef;--sub:#9aa3ad;--faint:#6b727b;--line:rgba(255,255,255,.08)}
+  html.rc-dark .lz-tabbar{background:rgba(28,32,38,.96);border-top-color:#2a2f36}
+  html.rc-dark .budget-edit input{background:#22272e;color:#e7ebef;border-color:#333a42}
+  html.rc-dark .usage-card{background:linear-gradient(135deg,#1d2a24,#1a2230)}
 }
+/* 兼容未支持 prefers-color-scheme 的旧浏览器回退：html.rc-dark 也强制切换 */
+html.rc-dark body{background:#161a1f;color:#e7ebef}
+html.rc-dark :root{--bg:#161a1f;--card:rgba(40,46,54,.7);--ink:#e7ebef;--sub:#9aa3ad;--faint:#6b727b;--line:rgba(255,255,255,.08)}
+html.rc-dark .lz-tabbar{background:rgba(28,32,38,.96);border-top-color:#2a2f36}
+html.rc-dark .budget-edit input{background:#22272e;color:#e7ebef;border-color:#333a42}
+html.rc-dark .usage-card{background:linear-gradient(135deg,#1d2a24,#1a2230)}
 
 </style>
 </head>
-<body data-page-node-id="9hywQwWBsJ2ECcjc6XO1FJ">
+<body>
 <!-- ================= 记账本（移植自记账小程序） ================= -->
-<div id="app" data-page-node-id="CFIUHhhOhvLVmY8ecL80JK">
-  <div class="lz-wrap" data-page-node-id="ppNZUFx3eGqu5kAWDAak9z">
+<div id="app">
+  <div class="lz-wrap">
 
   <!-- ============ 记一笔 ============ -->
-  <section class="view" id="lz-view-add" data-page-node-id="EBNG2Sfad3MdCjeXgl9vrl">
-    <div class="stats-strip" data-page-node-id="gtzTTP4sNTQlOhMc6noL9H">
-      <div class="stat-cell" data-page-node-id="wU7hlBQvgYAj7ct1OhRFhY"><span data-page-node-id="NuTdqJC4EjlrjTFXtIBooZ">今日</span><b id="lz-s-today" data-page-node-id="OnZl8XBLpKuAhxUt6gCsp9">0.00</b></div>
-      <div class="stat-cell" data-page-node-id="x8h4GEsZhmT8vbd82mKiGT"><span data-page-node-id="ptsWAqjjSiTIRlTV1m64Rn">本月</span><b id="lz-s-month" data-page-node-id="pfGBFXrO8TWfu7PfqSeBIw">0.00</b></div>
-      <div class="stat-cell" data-page-node-id="2I3sYDmdgob2epd49oZEEQ"><span data-page-node-id="NKFfyzd5uAHI0itRAN9dcw">今年</span><b id="lz-s-year" data-page-node-id="Mbo77Q7NyqFeurcFGO2vqg">0.00</b></div>
+  <section class="view" id="lz-view-add">
+    <div class="stats-strip">
+      <div class="stat-cell"><span>今日</span><b id="lz-s-today">0.00</b></div>
+      <div class="stat-cell"><span>本月</span><b id="lz-s-month">0.00</b></div>
+      <div class="stat-cell"><span>今年</span><b id="lz-s-year">0.00</b></div>
     </div>
-    <div class="quick-hint" hidden id="lz-reimb-hint" data-page-node-id="RnnGtcxm8xqaZ8mQsc1rUG">待报销合计 <b id="lz-s-reimb" data-page-node-id="Mvs2llE1V60wWAACv9nm7W">0.00</b></div>
-    <div class="card usage-card" data-page-node-id="ljZLP7nsKDBo5JwNOPuC8O">
-      <div class="card-hd" data-page-node-id="IvxWH9ll6gcMsbxlRUyCHG"><h2 data-page-node-id="a3k4NDPKAvls97assvlrQI">📖 怎么用（看一眼就会）</h2><button class="mini-btn" id="lz-usage-toggle" type="button" data-page-node-id="mmtuQnn04naYYCh6lrl8uf">收起</button></div>
-      <div id="lz-usage-body" data-page-node-id="7RRWXljryRSEd2rEe8vygm">
-        <ol class="usage" data-page-node-id="BvrF7aNc7PIJzYn6GXqrkS">
-          <li data-page-node-id="NwnO57WF6MXrFr92CvihLH"><b data-page-node-id="Zab6dRp7LINLhhzHBHHK6H">记一笔</b>：选账户 → 选用途 → 填金额 → 保存。每天花了啥顺手记一下。</li>
-          <li data-page-node-id="t4XkyNKdg2UsQqyLZtZ2N4"><b data-page-node-id="kvzMUsClnDmQbcMjF8pZfj">钱存在哪</b>：只存在你这台手机/电脑的浏览器里，<b data-page-node-id="QUIlHnFS6jv3UzFSnldIdL">不上传任何服务器</b>。换手机前点「设置 → 导出备份」留一份。</li>
-          <li data-page-node-id="dRzffCrp9iO6fBQlQ9cHaz"><b data-page-node-id="cXUasItPT3bCkvIpePr3uT">看花了多少</b>：点底部「统计」，有本月花了多少、都花哪了、账户还剩多少。</li>
-          <li data-page-node-id="m7wyGZRIGjxPEVnIvsoJxU"><b data-page-node-id="3tGEqWB1HB9GUqWSuyAOTH">控制预算</b>：点「设置 → 🎯 月度目标」，设个每月预算和想存的钱。超了会标红提醒你。</li>
-          <li data-page-node-id="TSgtABVsh75iHuCncz5lrD"><b data-page-node-id="Vtt1dGCYHCmF5eFJgG5Tlk">加到手机桌面</b>：iPhone 用 Safari 打开 → 分享 →「添加到主屏幕」，以后点图标就开，断网也能用。</li>
+    <div class="quick-hint" hidden id="lz-reimb-hint">待报销合计 <b id="lz-s-reimb">0.00</b></div>
+    <div class="card usage-card">
+      <div class="card-hd"><h2>📖 怎么用（看一眼就会）</h2><button class="mini-btn" id="lz-usage-toggle" type="button">收起</button></div>
+      <div id="lz-usage-body">
+        <ol class="usage">
+          <li><b>记一笔</b>：选账户 → 选用途 → 填金额 → 保存。每天花了啥顺手记一下。</li>
+          <li><b>钱存在哪</b>：只存在你这台手机/电脑的浏览器里，<b>不上传任何服务器</b>。换手机前点「设置 → 导出备份」留一份。</li>
+          <li><b>看花了多少</b>：点底部「统计」，有本月花了多少、都花哪了、账户还剩多少。</li>
+          <li><b>控制预算</b>：点「设置 → 🎯 月度目标」，设个每月预算和想存的钱。超了会标红提醒你。</li>
+          <li><b>加到手机桌面</b>：iPhone 用 Safari 打开 → 分享 →「添加到主屏幕」，以后点图标就开，断网也能用。</li>
         </ol>
       </div>
     </div>
-    <div class="quick-hint" id="lz-budget-strip" style="display:none" data-page-node-id="HT2YdMrcp5D98soOF2p9L3"></div>
+    <div class="quick-hint" id="lz-budget-strip" style="display:none"></div>
 
-    <div class="card" id="lz-form-card" data-page-node-id="rYMnCKF9FEOSu6daF27O5o">
-      <div class="amount-row" data-page-node-id="tTxamaH0un7x6RoW2UzpBt">
-        <span class="cny" data-page-node-id="VE1K0m5fSzMckl2grQOvdO">¥</span>
-        <input autocomplete="off" id="lz-f-amount" inputmode="decimal" placeholder="0.00" type="text" data-page-node-id="pEBDbIDxSwwmWEPdxGn7Ck">
-        <button class="type-chip" id="lz-f-type" type="button" data-page-node-id="p13d36NeF3DE9jzLiehk81">支出</button>
+    <div class="card" id="lz-form-card">
+      <div class="amount-row">
+        <span class="cny">¥</span>
+        <input autocomplete="off" id="lz-f-amount" inputmode="decimal" placeholder="0.00" type="text">
+        <button class="type-chip" id="lz-f-type" type="button">支出</button>
       </div>
-      <div class="field" data-page-node-id="iIaOMpYCNhj8U6yKEhhTDZ">
-        <label data-page-node-id="ODW6fLjGfzCMVpyG1LhOoh">支付账户</label>
-        <div class="chips" id="lz-f-accounts" data-page-node-id="gEyy1KeN2NO2BbYUtDyGXn"></div>
+      <div class="field">
+        <label>支付账户</label>
+        <div class="chips" id="lz-f-accounts"></div>
       </div>
-      <div class="field" data-page-node-id="WZFF39bUB0vY7zCtKpQsvP">
-        <label data-page-node-id="G2dDMhBcxrxDGQwXEHoHT7">用途</label>
-        <div id="lz-f-cats" data-page-node-id="t5g95HNEvkLccN4fDQ93F9"></div>
+      <div class="field">
+        <label>用途</label>
+        <div id="lz-f-cats"></div>
       </div>
-      <div class="field two-col" data-page-node-id="fWIMD2M7mGRsE9xtehjYz0">
-        <div data-page-node-id="AkFVyUCWfB7ouWbRALMekP">
-          <label data-page-node-id="1oawqEwhkPAr0CA7OWvZ3D">日期</label>
-          <input id="lz-f-date" type="date" data-page-node-id="ksTqotwPHSSPKK2sNAbBBb">
+      <div class="field two-col">
+        <div>
+          <label>日期</label>
+          <input id="lz-f-date" type="date">
         </div>
-        <div data-page-node-id="7wA8RCNiRFbJ3MhdZ182K8">
-          <label data-page-node-id="JC1XZjuWCilHFHUgQACTVi">备注</label>
-          <input autocomplete="off" id="lz-f-note" placeholder="选填，如 华润万家" type="text" data-page-node-id="J3qK5N1aUdag3X0rrREDc9">
+        <div>
+          <label>备注</label>
+          <input autocomplete="off" id="lz-f-note" placeholder="选填，如 华润万家" type="text">
         </div>
       </div>
-      <label class="switch-row" id="lz-reimb-row" data-page-node-id="IsWUADu4d5sDH8MWAHjTpz">
-        <input id="lz-f-reimb" type="checkbox" data-page-node-id="vmH1iEI57UUNALnFeY6nBH">
-        <span data-page-node-id="UsiZIeu6GuFY0vvx9SHHns">这笔能报销</span>
+      <label class="switch-row" id="lz-reimb-row">
+        <input id="lz-f-reimb" type="checkbox">
+        <span>这笔能报销</span>
       </label>
-      <p class="tip" id="lz-reimb-tip" style="margin:6px 0 0" data-page-node-id="tIvoSBnBXLNFHXfePcI5C9">帮别人垫付或公家报销的开支可勾上，收回时在「统计」页点「收回」。</p>
-      <div class="form-actions" data-page-node-id="NgMKH3k2eivJ9cPJe1cJqI">
-        <button class="btn-ghost" hidden id="lz-btn-cancel-edit" type="button" data-page-node-id="6c2luBaaFXI6zG0ArVrK5O">取消编辑</button>
-        <button class="btn-primary" id="lz-btn-save" type="button" data-page-node-id="tp9QTWcU1BtS0LqKpKlnGZ">保存</button>
+      <p class="tip" id="lz-reimb-tip" style="margin:6px 0 0">帮别人垫付或公家报销的开支可勾上，收回时在「统计」页点「收回」。</p>
+      <div class="form-actions">
+        <button class="btn-ghost" hidden id="lz-btn-cancel-edit" type="button">取消编辑</button>
+        <button class="btn-primary" id="lz-btn-save" type="button">保存</button>
       </div>
     </div>
-    <div class="card" id="lz-today-card" data-page-node-id="UzaIDJMnVgaKhJ1UMunVSX">
-      <div class="card-hd" data-page-node-id="CfHMaHUzzYYfozIyFtMFEn"><h2 data-page-node-id="NcUCEuueZjkHJd9ZTv0Hmh">今日流水</h2><span id="lz-today-count" data-page-node-id="GctMGkgUh5bmkABs8MHs5M"></span></div>
-      <div class="mini-list" id="lz-today-list" data-page-node-id="lZdY3KIwuUEDyBpcsBrsUk"></div>
+    <div class="card" id="lz-today-card">
+      <div class="card-hd"><h2>今日流水</h2><span id="lz-today-count"></span></div>
+      <div class="mini-list" id="lz-today-list"></div>
     </div>
   </section>
   <!-- ============ 明细 ============ -->
-  <section class="view hidden" id="lz-view-list" data-page-node-id="Ee2cWGKLgrx1f41fx31vfN">
-    <div class="card" data-page-node-id="jrctcUfLP2A8epL7srQLLk">
-      <div class="filter-row" data-page-node-id="p6TYcJIIM3c2UPol7X3mre">
-        <select id="lz-flt-account" data-page-node-id="lSdbQC7r74HGYprpuAanGP"></select>
-        <select id="lz-flt-cat" data-page-node-id="NxSqx4QDLHypZF3A7uAqYh"></select>
+  <section class="view hidden" id="lz-view-list">
+    <div class="card">
+      <div class="filter-row">
+        <select id="lz-flt-account"></select>
+        <select id="lz-flt-cat"></select>
       </div>
-      <div class="filter-row" data-page-node-id="9huR3R8jnk8fu6IE76yNcv">
-        <select id="lz-flt-range" data-page-node-id="FdI56nmGVuQVGlIOKPQlSL">
-          <option value="month" data-page-node-id="KLAYIidXSq6cqDhCt9YnIi">本月</option>
-          <option value="lastmonth" data-page-node-id="fxxW1pep7Al5nuEC6RyoM7">上月</option>
-          <option value="week" data-page-node-id="pIt7Dias87mQ61pyEBkl04">近 7 天</option>
-          <option value="year" data-page-node-id="p9UpPdPPOul6BVGKiFNgAc">今年</option>
-          <option value="all" data-page-node-id="E1jW5GTDSj7zjacBAbYQmm">全部</option>
+      <div class="filter-row">
+        <select id="lz-flt-range">
+          <option value="month">本月</option>
+          <option value="lastmonth">上月</option>
+          <option value="week">近 7 天</option>
+          <option value="year">今年</option>
+          <option value="all">全部</option>
         </select>
-        <input id="lz-flt-kw" placeholder="搜备注 / 金额" type="text" data-page-node-id="Nm1W1NTMFoK6keaQKGHRNP">
+        <input id="lz-flt-kw" placeholder="搜备注 / 金额" type="text">
       </div>
-      <div class="sum-row" data-page-node-id="yCzSFW89ZhoMC19izuBafV">
-        <span data-page-node-id="aOzn3m3qdj01QOiWnN3wop">共 <b id="lz-flt-count" data-page-node-id="FdhfPXCwhEuUvhtgrbDZhV">0</b> 笔</span>
-        <span data-page-node-id="wPEsdyN2QXN2AovqN30Sr5">支出 <b class="exp" id="lz-flt-exp" data-page-node-id="ZUc5jQS0p3jimXXt46vgAZ">0.00</b></span>
-        <span data-page-node-id="xjyUNXhX1AURBw0w0hO8lC">收入 <b class="inc" id="lz-flt-inc" data-page-node-id="au4ZfF9SSwonT9CbGLlCsv">0.00</b></span>
+      <div class="sum-row">
+        <span>共 <b id="lz-flt-count">0</b> 笔</span>
+        <span>支出 <b class="exp" id="lz-flt-exp">0.00</b></span>
+        <span>收入 <b class="inc" id="lz-flt-inc">0.00</b></span>
       </div>
     </div>
-    <div id="lz-list-body" data-page-node-id="gKbp4kkku4XO0QVTcCi9LS"></div>
+    <div id="lz-list-body"></div>
   </section>
   <!-- ============ 统计 ============ -->
-  <section class="view hidden" id="lz-view-stat" data-page-node-id="kiUfipxGsSd8eFZoyF26Kk">
-    <div class="stat-grid" data-page-node-id="2MrkVP9GhearAuNyK3PqGQ">
-      <div class="stat-box" data-page-node-id="msU2S9EHg51XGow9u0EZXq"><span data-page-node-id="owDrjxA3Ize6Q8vGWwlyQz">今日</span><b id="lz-t-today" data-page-node-id="t4tJuIkl5Xi7Ja6MyQv5Ue">0.00</b><i id="lz-t-today-n" data-page-node-id="tTT1CuU56jle70YBbhn89h"></i></div>
-      <div class="stat-box" data-page-node-id="HPvLgzWMSvQKEbUetbemkK"><span data-page-node-id="SpQnU1cQB2QsMW7VP4YTxI">本月</span><b id="lz-t-month" data-page-node-id="g7bjvP9k4tVDNki7EDGOiw">0.00</b><i id="lz-t-month-n" data-page-node-id="h8Cajw61DMua5jT0SM2j0V"></i></div>
-      <div class="stat-box" data-page-node-id="VJMd5xZwRKSF2dWm4z19fa"><span data-page-node-id="hPMSGHzGpdPubhnTdtSYJd">今年</span><b id="lz-t-year" data-page-node-id="eiZH0xmrjHg2D3tMgEJpjR">0.00</b><i id="lz-t-year-n" data-page-node-id="EX0LNwTgAj34qWHz1Lhzqp"></i></div>
-      <div class="stat-box" data-page-node-id="pXFk6vjEpbFwFvEWNgnmNX"><span data-page-node-id="gNNQhoLBB3L3MVZul41ikb">本月日均</span><b id="lz-t-avg" data-page-node-id="ashDwgqkbdW1hxh3DHB2qy">0.00</b><i id="lz-t-days" data-page-node-id="4xMRp9zWrKJoKeHFwNsCd1"></i></div>
+  <section class="view hidden" id="lz-view-stat">
+    <div class="stat-grid">
+      <div class="stat-box"><span>今日</span><b id="lz-t-today">0.00</b><i id="lz-t-today-n"></i></div>
+      <div class="stat-box"><span>本月</span><b id="lz-t-month">0.00</b><i id="lz-t-month-n"></i></div>
+      <div class="stat-box"><span>今年</span><b id="lz-t-year">0.00</b><i id="lz-t-year-n"></i></div>
+      <div class="stat-box"><span>本月日均</span><b id="lz-t-avg">0.00</b><i id="lz-t-days"></i></div>
     </div>
-    <div class="card" data-page-node-id="iE1C4mbOXoE0CAbvbFn5IO">
-      <div class="card-hd" data-page-node-id="WF9QkrWBVZFBxgsMz5RxHC"><h2 data-page-node-id="0r3GC1EObtmA91jL3ERcvA">本月分类排行</h2><span id="lz-rank-total" data-page-node-id="65yHrkAx0aMIVmCTmxSlCj"></span></div>
-      <div id="lz-cat-rank" data-page-node-id="Krpx9QFHOsidc7xeHdCqlQ"></div>
+    <div class="card">
+      <div class="card-hd"><h2>本月分类排行</h2><span id="lz-rank-total"></span></div>
+      <div id="lz-cat-rank"></div>
     </div>
-    <div class="card" data-page-node-id="M2mqhiynpPvo7FxCS1sZhT">
-      <div class="card-hd" data-page-node-id="G7ENVoyNLxEtcsbwYzK6DC"><h2 data-page-node-id="nILCADAkrPiWxCjbNF3ZkW">近 6 个月支出</h2></div>
-      <div class="bars" id="lz-month-bars" data-page-node-id="5JDbR8uPPtstIyhKhtmK9e"></div>
+    <div class="card">
+      <div class="card-hd"><h2>近 6 个月支出</h2></div>
+      <div class="bars" id="lz-month-bars"></div>
     </div>
-    <div class="card" data-page-node-id="bxOfyEuJia9cxNAnAQ8idg">
-      <div class="card-hd" data-page-node-id="HDZLPDDH7XShyoBMzaO024"><h2 data-page-node-id="FAtBFWDEAozEM2nyJrfTi7">账户结余</h2></div>
-      <div id="lz-acct-balances" data-page-node-id="rJb3Rx8RMEmVAKmnXB6Smo"></div>
+    <div class="card">
+      <div class="card-hd"><h2>账户结余</h2></div>
+      <div id="lz-acct-balances"></div>
     </div>
   </section>
   <!-- ============ 设置 ============ -->
-  <section class="view hidden" id="lz-view-set" data-page-node-id="wbBHQkuo7hFKdpR0eXs1ma">
-    <div class="card" id="lz-budget-card" data-page-node-id="qzphcq07zcP2oHe6Jp2Luf">
-      <div class="card-hd" data-page-node-id="GaJSvilLtH7DZbdPgF9DgW"><h2 data-page-node-id="V6Ev5EiAPUCeLOyw7JfOyz">🎯 月度目标</h2></div>
-      <div class="budget-edit" data-page-node-id="5IoaHREYFFGB1BJtELCcSu">
-        <label data-page-node-id="DH5EZMHPR4g29ZzgJCh1bk">每月最多花（预算 元）<input id="lz-budget-in" type="text" inputmode="decimal" placeholder="如 3000" data-page-node-id="o3Gk9IFgzFqN3hRbtCrFlb"></label>
-        <label data-page-node-id="Nfi2Xy3sc5R9d05k5zgbK6">这个月想存下（元）<input id="lz-goal-in" type="text" inputmode="decimal" placeholder="如 1500" data-page-node-id="184jScWRAvsPTnBz2es4A3"></label>
-        <button class="btn-primary" id="lz-btn-budget" type="button" data-page-node-id="ZX0iHqNf3M9KlkfixbcQnO">保存目标</button>
+  <section class="view hidden" id="lz-view-set">
+    <div class="card" id="lz-budget-card">
+      <div class="card-hd"><h2>🎯 月度目标</h2></div>
+      <div class="budget-edit">
+        <label>每月最多花（预算 元）<input id="lz-budget-in" type="text" inputmode="decimal" placeholder="如 3000"></label>
+        <label>这个月想存下（元）<input id="lz-goal-in" type="text" inputmode="decimal" placeholder="如 1500"></label>
+        <button class="btn-primary" id="lz-btn-budget" type="button">保存目标</button>
       </div>
-      <p class="tip" data-page-node-id="IPoKOo1FXZolbF048SgguN">设了预算后，记账时会提醒你本月还能花多少；快超了会标红警告。想存钱就填「想存下」，我们会盯着。</p>
+      <p class="tip">设了预算后，记账时会提醒你本月还能花多少；快超了会标红警告。想存钱就填「想存下」，我们会盯着。</p>
     </div>
-    <div class="card" data-page-node-id="faGxxNLBF2yTK3kvwMDYgy">
-      <div class="card-hd" data-page-node-id="epM6sBou8JukMOQVUsg9j8"><h2 data-page-node-id="sGinHcfLLigEZXWKlisIk7">账户</h2><button class="mini-btn" id="lz-btn-add-acct" type="button" data-page-node-id="BWpVdCALQJmWur8qjCXwky">+ 新增</button></div>
-      <div id="lz-acct-admin" data-page-node-id="IY9BAJ3iMidUulYo0jA7hQ"></div>
-      <p class="tip" data-page-node-id="G184JGBwJCWnNejsRjfEwu">这里管理你的钱从哪个账户出去。储蓄 / 余额类账户填初始余额后，会自动算结余。</p>
+    <div class="card">
+      <div class="card-hd"><h2>账户</h2><button class="mini-btn" id="lz-btn-add-acct" type="button">+ 新增</button></div>
+      <div id="lz-acct-admin"></div>
+      <p class="tip">这里管理你的钱从哪个账户出去。储蓄 / 余额类账户填初始余额后，会自动算结余。</p>
     </div>
-    <div class="card" data-page-node-id="wxck0O5q9hXrswysG3QrB4">
-      <div class="card-hd" data-page-node-id="MdBwOmtkwoEPbo5Jppqf0b"><h2 data-page-node-id="IqBN0E0wkfmFMuuhsH38m7">用途分类</h2><button class="mini-btn" id="lz-btn-add-cat" type="button" data-page-node-id="TMNFiFthBvGnjFL8Q2IShv">+ 新增</button></div>
-      <div id="lz-cat-admin" data-page-node-id="NYohkIHyLKNXUnXPGbQQpd"></div>
+    <div class="card">
+      <div class="card-hd"><h2>用途分类</h2><button class="mini-btn" id="lz-btn-add-cat" type="button">+ 新增</button></div>
+      <div id="lz-cat-admin"></div>
     </div>
-    <div class="card" data-page-node-id="EG0wPtHHIhh6MG4YCXLp0I">
-      <div class="card-hd" data-page-node-id="SemnUqIg5Y4v9qIz1TjCcL"><h2 data-page-node-id="WhcvGz9Gb5wEEbsYDkvkKH">数据</h2></div>
-      <div class="btn-col" data-page-node-id="LwvGfYpmdtlSFZZxfNLIWL">
-        <button class="btn-soft" id="lz-btn-export" type="button" data-page-node-id="mq0xvmvjb7ULBh8eo6lvgi">导出备份（JSON 文件）</button>
-        <button class="btn-soft" id="lz-btn-import" type="button" data-page-node-id="GXgM4l7e2x7FD0gAuZreJr">从备份导入</button>
-        <button class="btn-soft" id="lz-btn-csv" type="button" data-page-node-id="k39QQwTY1UodqfMjiYNmEC">导出明细（CSV，可开 Excel）</button>
-        <button class="btn-danger" id="lz-btn-reset" type="button" data-page-node-id="BRgxjBCGFVdibcecCUGC5p">清空全部数据</button>
+    <div class="card">
+      <div class="card-hd"><h2>数据</h2></div>
+      <div class="btn-col">
+        <button class="btn-soft" id="lz-btn-export" type="button">导出备份（JSON 文件）</button>
+        <button class="btn-soft" id="lz-btn-import" type="button">从备份导入</button>
+        <button class="btn-soft" id="lz-btn-csv" type="button">导出明细（CSV，可开 Excel）</button>
+        <button class="btn-danger" id="lz-btn-reset" type="button">清空全部数据</button>
       </div>
-      <p class="tip" id="lz-store-info" data-page-node-id="RDXRoj0XlKGeIN7oU6N5ca"></p>
-      <p class="tip" data-page-node-id="UkS5akAl4PDwTLNC9ko5KB">数据只存在这台设备的浏览器里，不上传任何服务器。换手机、清缓存前务必先导出备份。</p>
-      <input accept="application/json,.json" hidden id="lz-file-input" type="file" data-page-node-id="xHwFHPDMKlxntlFraWFfQV">
+      <p class="tip" id="lz-store-info"></p>
+      <p class="tip">数据只存在这台设备的浏览器里，不上传任何服务器。换手机、清缓存前务必先导出备份。</p>
+      <input accept="application/json,.json" hidden id="lz-file-input" type="file">
     </div>
-    <div class="card" id="lz-install-card" data-page-node-id="XuRzyVfgoPNLv4cJA2YaZt">
-      <div class="card-hd" data-page-node-id="L5ouhsnyb0sLaqOwODqgVr"><h2 data-page-node-id="I9GGHdDYrlVuHATdWNODtB">装到手机桌面</h2></div>
-      <p class="tip" data-page-node-id="HcT4WmfST6IMVuUJiyBPuC">
-        iPhone：Safari 打开此页 → 分享 → 「添加到主屏幕」。<br data-page-node-id="bEgpxZ4rAUg8CHOKGcD8kj">
-        安卓：Chrome 打开 → 右上角菜单 → 「添加到主屏幕 / 安装应用」。<br data-page-node-id="VshQniByNS4CgoYHhXOdsV">
+    <div class="card" id="lz-install-card">
+      <div class="card-hd"><h2>装到手机桌面</h2></div>
+      <p class="tip">
+        iPhone：Safari 打开此页 → 分享 → 「添加到主屏幕」。<br>
+        安卓：Chrome 打开 → 右上角菜单 → 「添加到主屏幕 / 安装应用」。<br>
         装好后点图标就是全屏记账，断网也能用。
       </p>
     </div>
   </section>
-<div class="sheet-mask hidden" id="lz-sheet-mask" data-page-node-id="QDskKDiU7131BNM9ETW3Tv">
-  <div class="sheet" id="lz-sheet" data-page-node-id="O1Cyqv3mBrcqoeoDbh9p6B">
-    <div class="sheet-hd" data-page-node-id="6J5y2T1nrYUQyxUjd2stGa"><h3 id="lz-sheet-title" data-page-node-id="nHPxBVhfhsUKSA42ewnIN3">编辑</h3><button class="ghost-btn" id="lz-sheet-close" type="button" data-page-node-id="25gxYMir48kfQt6pO8bsXB">关闭</button></div>
-    <div class="sheet-body" id="lz-sheet-body" data-page-node-id="SbUVBflUf0irKaJoyn5IC5"></div>
-    <div class="sheet-ft" data-page-node-id="huRj1E0BXVXDPv7iXaJTO5">
-      <button class="btn-danger" hidden id="lz-sheet-del" type="button" data-page-node-id="P2X0tPduP3unBajLSzNgBc">删除</button>
-      <button class="btn-primary" id="lz-sheet-ok" type="button" data-page-node-id="cnggERW3lYnIJm5OV3Ub9N">保存</button>
+<div class="sheet-mask hidden" id="lz-sheet-mask">
+  <div class="sheet" id="lz-sheet">
+    <div class="sheet-hd"><h3 id="lz-sheet-title">编辑</h3><button class="ghost-btn" id="lz-sheet-close" type="button">关闭</button></div>
+    <div class="sheet-body" id="lz-sheet-body"></div>
+    <div class="sheet-ft">
+      <button class="btn-danger" hidden id="lz-sheet-del" type="button">删除</button>
+      <button class="btn-primary" id="lz-sheet-ok" type="button">保存</button>
     </div>
   </div>
 </div>
-<div class="toast" id="lz-toast" data-page-node-id="Di48Q9NJDMBuRSUjfaNOWE"></div>
+<div class="toast" id="lz-toast"></div>
   </div>
 
-  <nav class="lz-tabbar" data-page-node-id="IZYRlwNafMAKJGQ9CZnReo">
-    <button class="lz-tab on" data-v="add" type="button" data-page-node-id="yhHPp4NTJnqhVWqCfsGH1W">✍️<span data-page-node-id="xQmMWllQrI2IV25gLsKxe2">记一笔</span></button>
-    <button class="lz-tab" data-v="list" type="button" data-page-node-id="FRRrazViJ2XqiAynA33LBZ">📋<span data-page-node-id="t1EyMZNOyIY5TPINzM2f1E">明细</span></button>
-    <button class="lz-tab" data-v="stat" type="button" data-page-node-id="i4GDNauup62PiBc0R0PpKX">📊<span data-page-node-id="POhAViyy82rgpefDHwqzNm">统计</span></button>
-    <button class="lz-tab" data-v="set" type="button" data-page-node-id="WnkHGFJWsmmZPXoBXwg5O8">⚙️<span data-page-node-id="LMXA6MyS7TzhCZcQrc7Iv7">设置</span></button>
+  <nav class="lz-tabbar">
+    <button class="lz-tab on" data-v="add" type="button">✍️<span>记一笔</span></button>
+    <button class="lz-tab" data-v="list" type="button">📋<span>明细</span></button>
+    <button class="lz-tab" data-v="stat" type="button">📊<span>统计</span></button>
+    <button class="lz-tab" data-v="set" type="button">⚙️<span>设置</span></button>
   </nav>
 </section>
 <script>
